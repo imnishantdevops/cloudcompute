@@ -4,7 +4,7 @@ metadata:
   name: weather-pod
   namespace: default
 spec:
-  interval: 5m   # Specify the reconciliation interval (e.g., every 5 minutes)
+  interval: 5m 
   releaseName: weather-pod
   chart:
     spec:
