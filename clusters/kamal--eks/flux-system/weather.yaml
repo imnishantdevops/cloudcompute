@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: ./chart
-      version: 2.11.0
+      version: 2.12.0
       sourceRef:
         kind: GitRepository
         name: chart
@@ -20,3 +20,38 @@ spec:
       repository: imnishantdevops/weather-forecast-app
       pullPolicy: IfNotPresent
       tag: "latest"
+    service:
+      type: NodePort
+      port: 80
+    env:
+      API_KEY: "0463d36f8a64d3405f77ae069770d0a4"  # Your OpenWeatherMap API key
+      API_URL: "http://api.openweathermap.org/data/2.5/weather"
+      Forecast_URL: "http://api.openweathermap.org/data/2.5/forecast"
+    resources:
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+    tolerations:
+      - key: "weather-app"
+        operator: "Equal"
+        value: "true"
+        effect: "NoSchedule"
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: node-role.kubernetes.io/master  
+                  operator: DoesNotExist 
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                    - weather-pod
+            topologyKey: "kubernetes.io/hostname"
