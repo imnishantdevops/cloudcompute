@@ -4,7 +4,7 @@ metadata:
   name: weather-pod
   namespace: default
 spec:
-  interval: 5m 
+  interval: 5m
   releaseName: weather-pod
   chart:
     spec:
@@ -22,18 +22,18 @@ spec:
       tag: "latest"
     service:
       type: NodePort
-      port: 80 
+      port: 80
     env:
-      API_KEY: "0463d36f8a64d3405f77ae069770d0a4" 
+      API_KEY: "{{ .Values.env.API_KEY | default \"0463d36f8a64d3405f77ae069770d0a4\" }}"
       API_URL: "http://api.openweathermap.org/data/2.5/weather"
       Forecast_URL: "http://api.openweathermap.org/data/2.5/forecast"
     resources:
       limits:
-        cpu: 100m
-        memory: 128Mi
+        cpu: "100m"
+        memory: "128Mi"
       requests:
-        cpu: 100m
-        memory: 128Mi
+        cpu: "100m"
+        memory: "128Mi"
     tolerations:
       - key: "weather-app"
         operator: "Equal"
@@ -44,13 +44,13 @@ spec:
         requiredDuringSchedulingIgnoredDuringExecution:
           nodeSelectorTerms:
             - matchExpressions:
-                - key: node-role.kubernetes.io/master  
-                  operator: DoesNotExist 
+                - key: node-role.kubernetes.io/master
+                  operator: DoesNotExist
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
               matchExpressions:
-                - key: app
+                - key: app.kubernetes.io/name
                   operator: In
                   values:
                     - weather-pod
