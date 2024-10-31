@@ -23,7 +23,6 @@ spec:
     service:
       type: NodePort
       port: 80      # External-facing port
-      targetPort: 3000  # Port on the container
     env:
       API_KEY: "0463d36f8a64d3405f77ae069770d0a4" 
       API_URL: "http://api.openweathermap.org/data/2.5/weather"
