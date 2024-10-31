@@ -24,9 +24,8 @@ spec:
       type: NodePort
       port: 80
     env:
-      API_KEY: "{{ .Values.env.API_KEY | default \"0463d36f8a64d3405f77ae069770d0a4\" }}"
       API_URL: "http://api.openweathermap.org/data/2.5/weather"
-      Forecast_URL: "http://api.openweathermap.org/data/2.5/forecast"
+      FORECAST_URL: "http://api.openweathermap.org/data/2.5/forecast"
     resources:
       limits:
         cpu: "100m"
