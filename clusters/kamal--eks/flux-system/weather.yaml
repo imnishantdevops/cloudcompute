@@ -1,0 +1,22 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: weather-pod
+  namespace: default
+spec:
+  interval: 5m   # Specify the reconciliation interval (e.g., every 5 minutes)
+  releaseName: weather-pod
+  chart:
+    spec:
+      chart: ./chart
+      version: 2.11.0
+      sourceRef:
+        kind: GitRepository
+        name: chart
+        namespace: default
+  values:
+    replicaCount: 2
+    image:
+      repository: imnishantdevops/weather-forecast-app
+      pullPolicy: IfNotPresent
+      tag: "latest"
