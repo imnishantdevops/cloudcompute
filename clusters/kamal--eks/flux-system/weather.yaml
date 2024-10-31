@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: ./chart
-      version: 2.16.0
+      version: 2.17.0
       sourceRef:
         kind: GitRepository
         name: chart
@@ -24,7 +24,7 @@ spec:
       type: NodePort
       port: 80
     env:
-      API_KEY: "0463d36f8a64d3405f77ae069770d0a4"  # Your OpenWeatherMap API key
+      API_KEY: "0463d36f8a64d3405f77ae069770d0a4" 
       API_URL: "http://api.openweathermap.org/data/2.5/weather"
       Forecast_URL: "http://api.openweathermap.org/data/2.5/forecast"
     resources:
