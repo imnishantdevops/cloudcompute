@@ -5,3 +5,4 @@ resources:
 - gotk-sync.yaml
 - sorcefile.yaml
 - weather.yaml
+- secret.yaml
