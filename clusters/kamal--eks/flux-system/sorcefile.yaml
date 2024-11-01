@@ -6,5 +6,7 @@ metadata:
 spec:
   interval: 1m
   url: https://github.com/imnishantdevops/weatherservice.git
+  ref:
+    branch: main  # Replace with the correct branch name
   secretRef:
     name: github-auth
