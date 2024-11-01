@@ -56,7 +56,7 @@ spec:
             topologyKey: "kubernetes.io/hostname"
 
 ---
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: weather-pod-hpa
