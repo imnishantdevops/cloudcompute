@@ -32,7 +32,7 @@ spec:
       annotations:
         nginx.ingress.kubernetes.io/rewrite-target: "/"
       hosts:
-        - host: "weather.forecastkamal.com"
+        - host: "weather.nishantoncloud.com"
           paths:
             - path: /
               pathType: Prefix
